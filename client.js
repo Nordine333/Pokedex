@@ -837,24 +837,29 @@ function GenereHtmlBouttonPourLimiterAffichage()
 function generePage(etatCourant) {
   const barredeNavigation = genereBarreNavigation(etatCourant);
   const modaleLogin = genereModaleLogin(etatCourant);
-   const AffichagePokemon_clear =etatCourant.TableauPokemonForamated.toString()
-   .replaceAll(',', '');
+  const AffichagePokemon_clear = etatCourant.TableauPokemonForamated.toString()
+    .replaceAll(',', '');
   return {
     html: barredeNavigation.html + modaleLogin.html + genereHtmlTableau(etatCourant) + 
      `${AffichagePokemon_clear}` + GenereHtmlBouttonPourLimiterAffichage() + 
 	`${etatCourant.InfoPokemonFormated} `,
-    callbacks: { ...barredeNavigation.callbacks, ...modaleLogin.callbacks,
-    "AugmenteAffichage": { onclick: () => AugmenteAffichage(etatCourant) }, 
-    "ReduireAffichage": { onclick: () => ReduitAffichage(etatCourant) },
-    "NbPokeShow": { innerHTML: etatCourant.PokemonAffichee },
-    "TrieNum": { onclick: () => TrieParNum(etatCourant) },
-    "TrieNom": { onclick: () => TrieParNom(etatCourant) },
-    "TrieAbilites": { onclick: () => TrieParAbilites(etatCourant) },
-    "TrieTypes": { onclick: () => TrieParTypes(etatCourant) },
-    "tab-tout": { className: etatCourant .MesPokemonsOuToutPokemon == 1 ? "is-active" : "" },
-    "tab-all-pokemons": { className: etatCourant
-		.MesPokemonsOuToutPokemon == -1 ? "is-active" : "" }, }, };
+    callbacks: {
+      ...barredeNavigation.callbacks,
+      ...modaleLogin.callbacks,
+      "AugmenteAffichage": { onclick: () => AugmenteAffichage(etatCourant) }, 
+      "ReduireAffichage": { onclick: () => ReduitAffichage(etatCourant) },
+      "NbPokeShow": { innerHTML: etatCourant.PokemonAffichee },
+      "TrieNum": { onclick: () => TrieParNum(etatCourant) },
+      "TrieNom": { onclick: () => TrieParNom(etatCourant) },
+      "TrieAbilites": { onclick: () => TrieParAbilites(etatCourant) },
+      "TrieTypes": { onclick: () => TrieParTypes(etatCourant) },
+      "tab-tout": { className: etatCourant.MesPokemonsOuToutPokemon == 1 ? "is-active" : "" },
+      "tab-all-pokemons": { className: etatCourant.MesPokemonsOuToutPokemon == -1 ? "is-active" : "" },
+      "recherchePokemon": { oninput: event => recherchePokemon(event, etatCourant) }
+    },
+  };
 }
+
 
 /* ******************************************************************
  * Initialisation de la page et fonction de mise à jour
