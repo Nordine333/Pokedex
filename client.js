@@ -769,7 +769,7 @@ function genereBarreNavigation(etatCourant) {
  * 
  * @returns un code HTML 
  */
-function genereHtmlTableau()
+function genereHtmlTableau(etatCourant)
 {
 	return ` <section class="section">
       <div class="columns">
@@ -783,7 +783,7 @@ function genereHtmlTableau()
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event)">
+		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event,etatCourant)">
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
@@ -841,7 +841,7 @@ function generePage(etatCourant) {
    const AffichagePokemon_clear =etatCourant.TableauPokemonForamated.toString()
    .replaceAll(',', '');
   return {
-    html: barredeNavigation.html + modaleLogin.html + genereHtmlTableau() + 
+    html: barredeNavigation.html + modaleLogin.html + genereHtmlTableau(etatCourant) + 
      `${AffichagePokemon_clear}` + GenereHtmlBouttonPourLimiterAffichage() + 
 	`${etatCourant.InfoPokemonFormated} `,
     callbacks: { ...barredeNavigation.callbacks, ...modaleLogin.callbacks,
