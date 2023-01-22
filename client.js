@@ -769,13 +769,8 @@ function genereBarreNavigation(etatCourant) {
  * 
  * @returns un code HTML 
  */
-
-
-
 function genereHtmlTableau()
 {
-	oninput="recherchePokemon(event)"
-
 	return ` <section class="section">
       <div class="columns">
         <div class="column">
@@ -788,22 +783,13 @@ function genereHtmlTableau()
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event)">
+		  <input type="search" autocomplete="off" id="recherchePokemon" >
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
     Abilities</span></th>
     <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
 }
-
-function recherchePokemon(etatCourant) {
-  const saisie = event.target.value;
-  const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
-    return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
-  });
-  formate_Affichage(pokemonsFiltres);
-}
-
 
 /**
  * Génère le code HTML
@@ -887,36 +873,7 @@ function majEtatEtPage(etatCourant, champsMisAJour) {
  * structure suivante où f1, f2 et f3 sont des callbacks:
  *
  * { "btn-pokedex": { "onclick": f1 },
-function genereHtmlTableau()
-{
-	return ` <section class="section">
-      <div class="columns">
-        <div class="column">
-          <div class="tabs is-centered"> <ul>
-              <li class="is-active" id="tab-all-pokemons">
-                <a>Tous les pokemons</a>
-              </li>
-              <li id="tab-tout"><a>Mes pokemons</a></li> </ul>
-          </div>
-          <div id="tbl-pokemons"></div>
-          <div id="tbl-pokemons">
-		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event,etatCourant)">
-	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
-    <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
-    <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
-    Abilities</span></th>
-    <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
-}
-
-function recherchePokemon(event,etatCourant) {
-  const saisie = event.target.value;
-  const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
-    return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
-  });
-  formate_Affichage(pokemonsFiltres);
-}
- *   "f-search": { "onchange": f2,
+ *   "input-search": { "onchange": f2,
  *                     "oninput": f3 }
  * }
  *
