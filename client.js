@@ -796,7 +796,7 @@ function genereHtmlTableau()
     <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
 }
 
-function recherchePokemon(event) {
+function recherchePokemon(etatCourant) {
   const saisie = event.target.value;
   const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
     return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
