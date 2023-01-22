@@ -889,7 +889,7 @@ function majEtatEtPage(etatCourant, champsMisAJour) {
  * { "btn-pokedex": { "onclick": f1 },
 function genereHtmlTableau()
 {
-	oninput="recherchePokemon(event)"
+	oninput="recherchePokemon(event,etatCourant)"
 
 	return ` <section class="section">
       <div class="columns">
@@ -903,7 +903,7 @@ function genereHtmlTableau()
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event)">
+		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event,etatCourant)">
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
