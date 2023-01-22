@@ -889,8 +889,6 @@ function majEtatEtPage(etatCourant, champsMisAJour) {
  * { "btn-pokedex": { "onclick": f1 },
 function genereHtmlTableau()
 {
-	oninput="recherchePokemon(event,etatCourant)"
-
 	return ` <section class="section">
       <div class="columns">
         <div class="column">
