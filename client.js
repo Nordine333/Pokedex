@@ -769,8 +769,9 @@ function genereBarreNavigation(etatCourant) {
  * 
  * @returns un code HTML 
  */
-function genereHtmlTableau(etatCourant) {
-  return ` <section class="section">
+function genereHtmlTableau()
+{
+	return ` <section class="section">
       <div class="columns">
         <div class="column">
           <div class="tabs is-centered"> <ul>
@@ -782,22 +783,13 @@ function genereHtmlTableau(etatCourant) {
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event, etatCourant)">
+		  <input type="search" autocomplete="off" id="recherchePokemon" >
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
     Abilities</span></th>
     <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
 }
-
-function recherchePokemon(event, etatCourant) {
-  const saisie = event.target.value;
-  const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
-    return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
-  });
-  formate_Affichage(pokemonsFiltres);
-}
-
 
 /**
  * Génère le code HTML
@@ -837,29 +829,24 @@ function GenereHtmlBouttonPourLimiterAffichage()
 function generePage(etatCourant) {
   const barredeNavigation = genereBarreNavigation(etatCourant);
   const modaleLogin = genereModaleLogin(etatCourant);
-  const AffichagePokemon_clear = etatCourant.TableauPokemonForamated.toString()
-    .replaceAll(',', '');
+   const AffichagePokemon_clear =etatCourant.TableauPokemonForamated.toString()
+   .replaceAll(',', '');
   return {
-    html: barredeNavigation.html + modaleLogin.html + genereHtmlTableau(etatCourant) + 
+    html: barredeNavigation.html + modaleLogin.html + genereHtmlTableau() + 
      `${AffichagePokemon_clear}` + GenereHtmlBouttonPourLimiterAffichage() + 
 	`${etatCourant.InfoPokemonFormated} `,
-    callbacks: {
-      ...barredeNavigation.callbacks,
-      ...modaleLogin.callbacks,
-      "AugmenteAffichage": { onclick: () => AugmenteAffichage(etatCourant) }, 
-      "ReduireAffichage": { onclick: () => ReduitAffichage(etatCourant) },
-      "NbPokeShow": { innerHTML: etatCourant.PokemonAffichee },
-      "TrieNum": { onclick: () => TrieParNum(etatCourant) },
-      "TrieNom": { onclick: () => TrieParNom(etatCourant) },
-      "TrieAbilites": { onclick: () => TrieParAbilites(etatCourant) },
-      "TrieTypes": { onclick: () => TrieParTypes(etatCourant) },
-      "tab-tout": { className: etatCourant.MesPokemonsOuToutPokemon == 1 ? "is-active" : "" },
-      "tab-all-pokemons": { className: etatCourant.MesPokemonsOuToutPokemon == -1 ? "is-active" : "" },
-      "recherchePokemon": { oninput: event => recherchePokemon(event, etatCourant) }
-    },
-  };
+    callbacks: { ...barredeNavigation.callbacks, ...modaleLogin.callbacks,
+    "AugmenteAffichage": { onclick: () => AugmenteAffichage(etatCourant) }, 
+    "ReduireAffichage": { onclick: () => ReduitAffichage(etatCourant) },
+    "NbPokeShow": { innerHTML: etatCourant.PokemonAffichee },
+    "TrieNum": { onclick: () => TrieParNum(etatCourant) },
+    "TrieNom": { onclick: () => TrieParNom(etatCourant) },
+    "TrieAbilites": { onclick: () => TrieParAbilites(etatCourant) },
+    "TrieTypes": { onclick: () => TrieParTypes(etatCourant) },
+    "tab-tout": { className: etatCourant .MesPokemonsOuToutPokemon == 1 ? "is-active" : "" },
+    "tab-all-pokemons": { className: etatCourant
+		.MesPokemonsOuToutPokemon == -1 ? "is-active" : "" }, }, };
 }
-
 
 /* ******************************************************************
  * Initialisation de la page et fonction de mise à jour
