@@ -783,13 +783,22 @@ function genereHtmlTableau()
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" >
+		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event)">
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
     Abilities</span></th>
     <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
 }
+
+function recherchePokemon(event,etatCourant) {
+  const saisie = event.target.value;
+  const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
+    return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
+  });
+  formate_Affichage(pokemonsFiltres);
+}
+
 
 /**
  * Génère le code HTML
