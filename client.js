@@ -769,9 +769,8 @@ function genereBarreNavigation(etatCourant) {
  * 
  * @returns un code HTML 
  */
-function genereHtmlTableau(etatCourant)
-{
-	return ` <section class="section">
+function genereHtmlTableau(etatCourant) {
+  return ` <section class="section">
       <div class="columns">
         <div class="column">
           <div class="tabs is-centered"> <ul>
@@ -783,7 +782,7 @@ function genereHtmlTableau(etatCourant)
           <div id="tbl-pokemons"></div>
           <div id="tbl-pokemons">
 		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
-		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event,etatCourant)">
+		  <input type="search" autocomplete="off" id="recherchePokemon" oninput="recherchePokemon(event, etatCourant)">
 	<table class="table"> <thead> <tr>  <th><span>Image</span></th>
     <th> <span id="TrieNum" >#</span ><span class="icon"><i></i></span> </th>
     <th><span id="TrieNom" >Name</span></th> <th><span id="TrieAbilites">
@@ -791,7 +790,7 @@ function genereHtmlTableau(etatCourant)
     <th><span id="TrieTypes">Types</span></th> </tr>  </thead> <tbody>`;
 }
 
-function recherchePokemon(event,etatCourant) {
+function recherchePokemon(event, etatCourant) {
   const saisie = event.target.value;
   const pokemonsFiltres = etatCourant.TableauPokemon.filter((pokemon) => {
     return pokemon.Name.toLowerCase().includes(saisie.toLowerCase());
