@@ -1,7 +1,6 @@
 <html>
   <head>
     <title>Pokemon companion</title>
-    <link rel="icon" type="image/png" href="img/icon.png">
     <link rel="stylesheet" href="bulma.min.css" />
     <link
       rel="stylesheet"
@@ -10,9 +9,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
   <body>
-   <div style="text-align: center; position: absolute; top: 11%; left: 50%; transform: translate(-50%, -50%); z-index: 999;">
-      <img src="img/logo.png" alt="Logo du pokedex" style="width: 37%; height: auto; margin-top: -50px;">
-   </div>
    <script src="client.js"></script>
    <p id="NomUtilisateur"></p>
     <div id="root">
@@ -35,6 +31,71 @@
           </div>
         </div>
       </nav>
+    </div>
+    <!-- le HTML ci-dessous est fourni à titre d'exemple mais devra être
+    supprimé de l'application finale. Bien penser à garder la balise script et
+    les balises fermantes après cette balise script. -->
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <div class="tabs is-centered">
+            <ul>
+              <li class="is-active" id="tab-all-pokemons">
+                <a>Tous les pokemons</a>
+              </li>
+              <li id="tab-tout"><a>Mes pokemons</a></li>
+            </ul>
+          </div>
+          <div id="tbl-pokemons"></div>
+          <div id="tbl-pokemons">
+		  <label for="recherchePokemon" >Rechercher un pokémon : </label>
+		  <input type="search" autocomplete="off" id="recherchePokemon" >
+          <div id="AffichagePokemon" ></div> <!-- Sert de placeholder pour l'affichage du tableau de pokémon -->
+          </tbody> </table> </div> 
+         <p id="NbPokeShow" style="float:left;" > 10 <p style="float:right;" > </p> &nbsp;résultats affichés </p> </p> <!-- &nbsp; est un caractere invisibe -->
+		<input type="button" value="+ 10" onclick="AugmenteAffichage()"> 
+		<input type="button" value="- 10" onclick="ReduitAffichage()"> 
+        </div>
+        <div class="column">
+         <div class="card">
+ 	      <p id="replace" ></p> <!-- Sert de placeholder pour l'affichage des infos d'un pokémon -->
+            </figure>
+           </figure>
+          </article>
+          </div>
+          <div class="card-footer">
+              <article class="media">
+                <div class="media-content">
+                  <button id="bouton-MAJ_deck" class="is-success button" tabindex="0">
+                    Ajouter à mon deck
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="mdl-login" class="modal is-inactive">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Utilisateur</p>
+          <button
+            id="btn-close-login-modal1"
+            class="delete"
+            aria-label="close"
+          ></button>
+        </header>
+        <section class="modal-card-body">
+          <p id="elt-affichage-login">
+            Ici, il faudrait afficher le login de l'utilisateur.
+          </p>
+        </section>
+        <footer class="modal-card-foot" style="justify-content: flex-end">
+          <button id="btn-close-login-modal2" class="button">Fermer</button>
+        </footer>
+      </div>
     </div>
   </body>
 </html>
